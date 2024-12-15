@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properti Indonesia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        @font-face { 
+            font-family: 'Montserrat Arabic'; 
+            src: url('fonts/Montserrat-Arabic.ttf') format('truetype'); 
+        }
+            
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat Arabic', Arial;
+            background-color: #f0f0f0;
+            background-image: url('images/bg.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 131, 222, 0.9); 
+            display: flex;
+            align-items: center;
+            padding: 20px 40px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .header:hover {
+            background-color: rgba(0, 92, 185, 0.8);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 40px;
+            transition: transform 0.3s;
+        }
+
+        .header .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .header .logo img {
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        .header .logo img:hover {
+            transform: rotate(360deg);
+        }
+
+        .header .buy {
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .header .buy a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header .buy a:hover {
+            color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .header nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header nav a:hover {
+            color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .header .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 40px;
+            transition: transform 0.3s;
+        }
+
+        .header .language-switch:hover {
+            transform: scale(1.1);
+        }
+
+        .header .language-switch span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header .language-switch span:hover {
+            color: #FFD700;
+        }
+
+        .header .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .header .profile:hover {
+            transform: scale(1.1);
+        }
+
+        .header .profile img {
+            height: 30px;
+            margin-left: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .header .profile img:hover {
+            transform: rotate(360deg);
+        }
+
+        .jumbotron {
+            background-image: url('images/jumbotron.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .properti {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .properti:hover {
+            transform: scale(1.1);
+        }
+
+        .properti img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .properti h2 {
+            font-size: 18px;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        .properti p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif; 
+        }
+
+        .harga {
+            font-size: 16px;
+            font-weight: bold;
+            color: #005CB9;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-body form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-body form input, .modal-body form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal-body form button[type="submit"] {
+            background-color: #005CB9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-body form button[type="submit"]:hover {
+            background-color: yellow;
+        }
+
+        .filter {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .filter:hover {
+            transform: scale(1.1);
+        }
+
+        .filter h2 {
+            font-size: 18px;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        .filter p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif; 
+        }
+
+        .filter select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .filter button[type="submit"] {
+            background-color: #005CB9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter button[type="submit"]:hover {
+            background-color: yellow;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100px;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        .card p {
+            font-size: 14 px;
+            color: #555;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif; 
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #005CB9;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query untuk ukuran layar kecil */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header .logo {
+                margin-bottom: 20px;
+            }
+
+            .header .buy {
+                margin-right: 0;
+            }
+
+            .header nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header nav a {
+                margin-bottom: 20px;
+            }
+
+            .jumbotron {
+                height: 50vh;
+            }
+
+            .properti {
+                margin-bottom: 20px;
+               .filter {
+                margin-bottom: 20px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Media Query untuk ukuran layar sangat kecil */
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px;
+            }
+
+            .header .logo {
+                margin-bottom: 10px;
+            }
+
+            .header .buy {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header .buy a {
+                margin-bottom: 10px;
+            }
+
+            .jumbotron {
+                height: 30vh;
+            }
+
+            .properti {
+                margin-bottom: 10px;
+            }
+
+            .filter {
+                margin-bottom: 10px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        footer {
+            background-color: #1e1414;
+            padding: 20px;
+            color: #333;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        footer .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        footer .col-lg-3 {
+            flex-basis: 25%;
+            padding: 20px;
+        }
+
+        footer h5 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer li {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #005CB9;
+        }
+
+        footer .fab, footer .fas {
+            margin-right: 10px;
+        }
+        .content {
+            display: flex;
+            padding: 20px;
+        }
+
+        .left-section {
+            width: 300px;
+            padding-right: 20px;
+        }
+
+        .right-section {
+            flex: 1;
+        }
+
+        .info-box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .info-box-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .info-box-content {
+            padding: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .social-media {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .social-media a {
+            display: block;
+            color: #0066cc;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            flex: 1;
+            min-width: 200px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-2px);
+            background-color: #e9ecef;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2ebffb;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/icon.png" alt="Properti Indonesia Logo">
+        </div>
+        <div class="buy">
+            <a href="index.html">Beranda</a>
+            <a href="properti.html">Properti</a>
+            <a href="tentang.html">Tentang</a>
+            <a href="kontak.html">Kontak</a>
+        </div>
+        <div class="language-switch">
+            <span></span>
+        </div>
+        <div class="profile">
+            <img src="images/profile.png" alt="Profile Icon">
+        </div>
+    </header>
+    </header>
+    <main>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class ="filter">
+                        <h2>Filter Properti</h2>
+                        <form id="filterForm">
+                            <div class="form-group">
+                                <label for="lokasi">Lokasi</label>
+                                <input type="text" class="form-control" id="lokasi" placeholder="Masukkan lokasi">
+                            </div>
+                            <div class="form-group">
+                                <label for="jenis-properti">Jenis Properti</label>
+                                <select class="form-control" id="jenis-properti">
+                                    <option value="">Pilih jenis properti</option>
+                                    <option value="rumah">Rumah</option>
+                                    <option value="apartemen">Apartemen</option>
+                                    <option value="tanah">Tanah</option>
+                                    <option value="kantor">Kantor</option>
+                                    <option value="gudang">Gudang</option>
+                                    <option value="hotel">Hotel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="harga">Harga Maksimal</label>
+                                <input type="number" class="form-control" id="harga" placeholder="Masukkan harga maksimal">
+                            </div>
+                            <div class="form-group">
+                                <label for="luas">Luas Minimal</label>
+                                <input type="number" class="form-control" id="luas" placeholder="Masukkan luas minimal">
+                            </div>
+                            <div class="form-group">
+                                <label for="kamar">Jumlah Kamar Minimal</label>
+                                <input type="number" class="form-control" id="kamar" placeholder="Masukkan jumlah kamar minimal">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cari</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row" id="propertyList">
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/rumah/1.png" alt="Rumah Mewah di Jakarta">
+                                <h2>Rumah Mewah di Jakarta</h2>
+                                <p class="harga">Rp 5.000.000.000</p>
+                                <p>Luas: 200m²</p>
+                                <p>Jumlah Kamar: 5</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/rumah/2.png" alt="Rumah Minimalis di Jakarta">
+                                <h2>Rumah Minimalis di Jakarta</h2>
+                                <p class="harga">Rp 3.500.000.000</p>
+                                <p>Luas: 120m²</p>
+                                <p>Jumlah Kamar: 3</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/rumah/3.png" alt="Rumah Klasik di Yogyakarta">
+                                <h2>Rumah Klasik di Yogyakarta</h2>
+                                <p class="harga">Rp 2.500.000.000</p>
+                                <p>Luas: 180m²</p>
+                                <p>Jumlah Kamar: 4</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/rumah/4.png" alt="Rumah Modern di Jakarta">
+                                <h2>Rumah Modern di Jakarta</h2>
+                                <p class="harga">Rp 4.500.000.000</p>
+                                <p>Luas: 250m²</p>
+                                <p>Jumlah Kamar: 4</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/1.png" alt="Apartemen di Bandung">
+                                <h2>Apartemen di Bandung</h2>
+                                <p class="harga">Rp 2.000.000.000</p>
+                                <p>Luas: 150m²</p>
+                                <p>Jumlah Kamar: 3</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/2.png" alt="Apartemen Mewah di Bali">
+                                <h2>Apartemen Mewah di Bali</h2>
+                                <p class="harga">Rp 4.500.000.000</p>
+                                <p>Luas: 90m²</p>
+                                <p>Jumlah Kamar: 2</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/3.png" alt="Apartemen Minimalis di Bandung">
+                                <h2>Apartemen Minimalis di Bandung</h2>
+                                <p class="harga">Rp 1.800.000.000</p>
+                                <p>Luas: 80m²</p>
+                                <p>Jumlah Kamar: 2</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/4.png" alt="Apartemen di Puncak">
+                                <h2>Apartemen di Puncak</h2>
+                                <p class="harga">Rp 2.200.000.000</p>
+                                <p>Luas: 90m²</p>
+                                <p>Jumlah Kamar: 2</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/5.png" alt="Apartemen di Jakarta Selatan">
+                                <h2>Apartemen di Jakarta Selatan</h2>
+                                <p class="harga">Rp 3.800.000.000</p>
+                                <p>Luas: 110m²</p>
+                                <p>Jumlah K amar: 3</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/apartemen/6.png" alt="Apartemen di Jakarta Utara">
+                                <h2>Apartemen di Jakarta Utara</h2>
+                                <p class="harga">Rp 2.500.000.000</p>
+                                <p>Luas: 95m²</p>
+                                <p>Jumlah Kamar: 2</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/1.png" alt="Tanah di Bali">
+                                <h2>Tanah di Bali</h2>
+                                <p class="harga">Rp 1.500.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/2.png" alt="Tanah Strategis di Bandung">
+                                <h2>Tanah Strategis di Bandung</h2>
+                                <p class="harga">Rp 2.000.000.000</p>
+                                <p>Luas: 500m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/3.png" alt="Tanah Luas di Bali">
+                                <h2>Tanah Luas di Bali</h2>
+                                <p class="harga">Rp 2.000.000.000</p>
+                                <p>Luas: 1500m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/4.png" alt="Tanah Komersial di Jakarta">
+                                <h2>Tanah Komersial di Jakarta</h2>
+                                <p class="harga">Rp 5.500.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/5.png" alt="Tanah di Cikarang">
+                                <h2>Tanah di Cikarang</h2>
+                                <p class="harga">Rp 2.200.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/tanah/6.png" alt="Tanah Investasi di Bogor">
+                                <h2>Tanah Investasi di Bogor</h2>
+                                <p class="harga">Rp 1.700.000.000</p>
+                                <p>Luas: 1200m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/1.png" alt="Kantor di Surabaya">
+                                <h2>Kantor di Surabaya</h2>
+                                <p class="harga">Rp 3.000.000.000</p>
+                                <p>Luas: 500m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/2.png" alt="Kantor Modern di Jakarta">
+                                <h2>Kantor Modern di Jakarta</h2>
+                                <p class="harga">Rp 6.000.000.000</p>
+                                <p>Luas: 300m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/3.png" alt="Kantor Strategis di Surabaya">
+                                <h2>Kantor Strategis di Surabaya</h2>
+                                <p class="harga">Rp 3.500.000.000</p>
+                                <p>Luas: 400m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/4.png" alt="Kantor Modern di Bandung">
+                                <h2>Kantor Modern di Bandung</h2>
+                                <p class="harga">Rp 3.200.000.000</p>
+                                <p>Luas: 300m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/5.png" alt="Kantor di Jakarta Pusat">
+                                <h2>Kantor di Jakarta Pusat</h2>
+                                <p class="harga">Rp 4.200.000.000</p>
+                                <p>Luas: 350m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/kantor/6.png" alt="Kantor di Bekasi">
+                                <h2>Kantor di Bekasi</h2>
+                                <p class="harga">Rp 3.000.000.000</p>
+                                <p>Luas: 400m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/1.png" alt="Gudang di Medan">
+                                <h2>Gudang di Medan</h2>
+                                <p class="harga">Rp 2.500.000.000</p>
+                                <p>Luas: 800m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/2.png" alt="Gudang Luas di Surabaya">
+                                <h2>Gudang Luas di Surabaya</h2>
+                                <p class="harga">Rp 3.000.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/3.png" alt="Gudang Besar di Surabaya">
+                                <h2>Gudang Besar di Surabaya</h2>
+                                <p class="harga">Rp 3.000.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/4.png" alt="Gudang di Tangerang">
+                                <h2>Gudang di Tangerang</h2>
+                                <p class="harga">Rp 2.500.000.000</p>
+                                <p>Luas: 500m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/5.png" alt="Gudang di Semarang">
+                                <h2>Gudang di Semarang</h2>
+                                <p class="harga">Rp 2.700.000.000</p>
+                                <p>Luas: 700m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/gudang/6.png" alt="Gudang di Medan">
+                                <h2>Gudang di Medan</h2>
+                                <p class="harga">Rp 2.800.000.000</p>
+                                <p>Luas: 600m²</p>
+                                <p>Jumlah Kamar: 0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/hotel/1.png" alt="Hotel di Yogyakarta">
+                                <h2>Hotel di Yogyakarta</h2>
+                                <p class="harga">Rp 4.000.000.000</p>
+                                <p>Luas: 1000m²</p>
+                                <p>Jumlah Kamar: 20</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="properti">
+                                <img src="images/hotel/2.png" alt="Hotel Bintang Lima di Bali">
+                                <h2>Hotel Bintang Lima di Bali</h2>
+                                <p class="harga">Rp 10.000.000.000</p>
+                                <p>Luas: 2000m²</p>
+                                <p>Jumlah Kamar: 50</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Tentang Kami</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-dark">Visi dan Misi</a></li>
+                        <li><a href="#" class="text-dark">Sejarah</a></li>
+                        <li><a href="#" class="text-dark">Tim</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Layanan</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-dark">Cari Properti</a></li>
+                        <li><a href="#" class="text-dark">Jual Properti</a></li>
+                        <li><a href="#" class="text-dark">Sewa Properti</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Sosial Media</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-dark"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#" class="text-dark"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-dark"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Kontak</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-dark"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="#" class="text-dark"><i class="fas fa-phone"></i> Telepon</a></li>
+                        <li><a href="#" class="text-dark"><i class="fas fa-map-marker-alt"></i> Alamat</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p -3" style="background-color: rgba(166, 141, 141, 0.2);">
+            &copy; 2024 Shanea Indonesia
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        const properties = [
+            {
+                title: 'Rumah Mewah di Jakarta',
+                location: 'Jakarta',
+                type: 'rumah',
+                price: 5000000000,
+                area: 200,
+                rooms: 5,
+                image: 'images/rumah/1.png'
+            },
+            {
+                title: 'Rumah Minimalis di Jakarta',
+                location: 'Jakarta',
+                type: 'rumah',
+                price: 3500000000,
+                area: 120,
+                rooms: 3,
+                image: 'images/rumah/2.png'
+            },
+            {
+                title: 'Rumah Klasik di Yogyakarta',
+                location: 'Yogyakarta',
+                type: 'rumah',
+                price: 2500000000,
+                area: 180,
+                rooms: 4,
+                image: 'images/rumah/3.png'
+            },
+            {
+                title: 'Rumah Modern di Jakarta',
+                location: 'Jakarta',
+                type: 'rumah',
+                price: 4500000000,
+                area: 250,
+                rooms: 4,
+                image: 'images/rumah/4.png'
+            },
+            {
+                title: 'Apartemen di Bandung',
+                location: 'Bandung',
+                type: 'apartemen',
+                price: 2000000000,
+                area: 150,
+                rooms: 3,
+                image: 'images/apartemen/1.png'
+            },
+            {
+                title: 'Apartemen Mewah di Bali',
+                location: 'Bali',
+                type: 'apartemen',
+                price: 4500000000,
+                area: 90,
+                rooms: 2,
+                image: 'images/apartemen/2.png'
+            },
+            {
+                title: 'Apartemen Minimalis di Bandung',
+                location: 'Bandung',
+                type: 'apartemen',
+                price: 1800000000,
+                area: 80,
+                rooms: 2,
+                image: 'images/apartemen/3.png'
+            },
+            {
+                title: 'Apartemen di Puncak',
+                location: 'Puncak',
+                type: 'apartemen',
+                price: 2200000000,
+                area: 90,
+                rooms: 2,
+                image: 'images/apartemen/4.png'
+            },
+            {
+                title: 'Apartemen di Jakarta Selatan',
+                location: 'Jakarta Selatan',
+                type: 'apartemen',
+                price: 3800000000,
+                area: 110,
+                rooms: 3,
+                image: 'images/apartemen/5.png'
+            },
+            {
+                title: 'Apartemen di Jakarta Utara',
+                location: 'Jakarta Utara',
+                type: 'apartemen',
+                price: 2500000000,
+                area: 95,
+                rooms: 2,
+                image: 'images/apartemen/6.png'
+            },
+            {
+                title: 'Tanah di Bali',
+                location: 'Bali',
+                type: 'tanah',
+                price: 1500000000,
+                area: 1000,
+                rooms: 0,
+                image: 'images/tanah/1.png'
+            },
+            {
+                title: 'Tanah Strategis di Bandung',
+                location: 'Bandung',
+                type: 'tanah',
+                price: 2000000000,
+                area: 500,
+                rooms: 0,
+                image: 'images/tanah/2.png'
+            },
+            {
+                title: 'Tanah Luas di Bali',
+                location: 'Bali',
+                type: 'tanah',
+                price: 2000000000,
+                area: 1500,
+                rooms: 0,
+                image: 'images/tanah/3.png'
+            },
+            {
+                title: 'Tanah Komersial di Jakarta',
+                location: 'Jakarta',
+                type: 'tanah',
+                price: 5500000000,
+                area: 1000,
+                rooms: 0,
+                image: 'images/tanah/4.png'
+            },
+            {
+                title: 'Tanah di Cikarang',
+                location: 'Cikarang',
+                type: 'tanah',
+                price: 2200000000,
+                area: 1000,
+                rooms: 0,
+                image: 'images/tanah/5.png'
+            },
+            {
+                title: 'Tanah Investasi di Bogor',
+                location: 'Bogor',
+                type: 'tanah',
+                price: 1700000000,
+                area: 1200,
+                rooms:  0,
+                image: 'images/tanah/6.png'
+            },
+            {
+                title: 'Kantor di Surabaya',
+                location: 'Surabaya',
+                type: 'kantor',
+                price: 3000000000,
+                area: 500,
+                rooms: 0,
+                image: 'images/kantor/1.png'
+            },
+            {
+                title: 'Kantor Modern di Jakarta',
+                location: 'Jakarta',
+                type: 'kantor',
+                price: 6000000000,
+                area: 300,
+                rooms: 0,
+                image: 'images/kantor/2.png'
+            },
+            {
+                title: 'Kantor Strategis di Surabaya',
+                location: 'Surabaya',
+                type: 'kantor',
+                price: 3500000000,
+                area: 400,
+                rooms: 0,
+                image: 'images/kantor/3.png'
+            },
+            {
+                title: 'Kantor Modern di Bandung',
+                location: 'Bandung',
+                type: 'kantor',
+                price: 3200000000,
+                area: 300,
+                rooms: 0,
+                image: 'images/kantor/4.png'
+            },
+            {
+                title: 'Kantor di Jakarta Pusat',
+                location: 'Jakarta Pusat',
+                type: 'kantor',
+                price: 4200000000,
+                area: 350,
+                rooms: 0,
+                image: 'images/kantor/5.png'
+            },
+            {
+                title: 'Kantor di Bekasi',
+                location: 'Bekasi',
+                type: 'kantor',
+                price: 3000000000,
+                area: 400,
+                rooms: 0,
+                image: 'images/kantor/6.png'
+            },
+            {
+                title: 'Gudang di Medan',
+                location: 'Medan',
+                type: 'gudang',
+                price: 2500000000,
+                area: 800,
+                rooms: 0,
+                image: 'images/gudang/1.png'
+            },
+            {
+                title: 'Gudang Luas di Surabaya',
+                location: 'Surabaya',
+                type: 'gudang',
+                price: 3000000000,
+                area: 1000,
+                rooms: 0,
+                image: 'images/gudang/2.png'
+            },
+            {
+                title: 'Gudang Besar di Surabaya',
+                location: 'Surabaya',
+                type: 'gudang',
+                price: 3000000000,
+                area: 1000,
+                rooms: 0,
+                image: 'images/gudang/3.png'
+            },
+            {
+                title: 'Gudang di Tangerang',
+                location: 'Tangerang',
+                type: 'gudang',
+                price: 2500000000,
+                area: 500,
+                rooms: 0,
+                image: 'images/gudang/4.png'
+            },
+            {
+                title: 'Gudang di Semarang',
+                location: 'Semarang',
+                type: 'gudang',
+                price: 2700000000,
+                area: 700,
+                rooms: 0,
+                image: 'images/gudang/5.png'
+            },
+            {
+                title: 'Gudang di Medan',
+                location: 'Medan',
+                type: 'gudang',
+                price: 2800000000,
+                area: 600,
+                rooms: 0,
+                image: 'images/gudang/6.png'
+            },
+            {
+                title: 'Hotel di Yogyakarta',
+                location: 'Yogyakarta',
+                type: 'hotel',
+                price: 4000000000,
+                area: 1000,
+                rooms: 20,
+                image: 'images/hotel/1.png'
+            },
+            {
+                title: 'Hotel Bintang Lima di Bali',
+                location: 'Bali',
+                type: 'hotel',
+                price: 10000000000,
+                area: 2000,
+                rooms: 50,
+                image: 'images/hotel/2.png'
+            }
+
+            
+
+        ];
+
+        document.getElementById('filterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const location = document.getElementById('lokasi').value.toLowerCase();
+            const type = document.getElementById('jenis-properti').value;
+            const maxPrice = parseInt(document.getElementById('harga').value) || Infinity;
+            const minArea = parseInt(document.getElementById('luas').value) || 0;
+            const minRooms = parseInt(document.getElementById('kamar').value) || 0;
+
+            const filteredProperties = properties.filter(property => {
+                return (location === '' || property.location.toLowerCase().includes(location)) &&
+                       (type === '' || property.type === type) &&
+                       (property.price <= maxPrice) &&
+                       (property.area >= minArea) &&
+                       (property.rooms >= minRooms);
+            });
+
+            displayProperties(filteredProperties);
+        });
+
+        function displayProperties(properties) {
+            const propertyList = document.getElementById('propertyList');
+            propertyList.innerHTML = '';
+
+            if (properties.length === 0) {
+                propertyList.innerHTML = '<p>Tidak ada properti yang ditemukan.</p>';
+                return;
+            }
+
+            properties.forEach(property => {
+                const propertyCard = `
+                    <div class="col-md-4">
+                        <div class=" properti">
+                            <img src="${property.image}" alt="${property.title}">
+                            <h2>${property.title}</h2>
+                            <p>Lokasi: ${property.location}</p>
+                            <p class="harga">Rp ${property.price.toLocaleString()}</p>
+                            <p>Luas: ${property.area} m²</p>
+                            <p>Jumlah Kamar: ${property.rooms}</p>
+                        </div>
+                    </div>
+                `;
+                propertyList.innerHTML += propertyCard;
+            });
+        }
+    </script>
+</body>
+</html>
